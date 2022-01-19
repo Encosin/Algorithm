@@ -154,3 +154,5 @@ if __name__ == "__main__" :
 
     insertNode("재남", "신")
     printNodes(head)
+
+
