@@ -100,17 +100,3 @@ que = [None for _ in range(size)]
 front = rear = -1
 
 print("Que is Empty? -->", QueEmpty)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
