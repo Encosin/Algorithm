@@ -23,6 +23,9 @@
 # 4) 네 번째부터 여섯 번째까지 Node를 생성하고 부모 Node와 연결한다.
 
 # 이와 같은 과정은 다음과 같이 표기한다.
+from tkinter.messagebox import NO
+
+
 class TreeNode() :   # 이진 트리 노드 생성
     def __init__ (self) :
         self.left = None
@@ -234,3 +237,54 @@ elif 현재 작업 노드의 Data < 찾을 Data :
 else :
     오른쪽 서브 트리 검색 
 """
+
+# code08-05.py 이진 탐색 트리의 삭제 작동
+# 함수 선언 부분은 앞과 동일하므로 생략한다.
+deleteName = 'Dixie'  # 삭제하려는 Data, 트리에 없는 이름이었다면, 경고 메시지를 반환한다.
+
+current = root  # 루트 노드부터 검색을 한다.
+parent = None   # 삭제하는 노드의 상위 노드를 저장할 변수.
+while True :  # Data를 찾을때까지 반복하기 위한 무한루프
+    if deleteName == current.data :  # deleteName인 'Dixie'가 현재 Data였다면,
+
+        if current.left == None and current.right == None :  # 삭제할 데이터를 찾았을때 처리하는 부분, 
+            # 삭제할 노드가 리프 노드일 경우에 처리, 자신을 가리키던 부모 노드의 link를 None으로 만들고, 노드를 삭제한다.
+            if parent.left == current :
+                parent.left = None 
+            else :
+                parent.right = None 
+            del(current)
+
+        elif current.left != None and current.right == None : # 삭제할 노드의 왼쪽 자식노드가 있을 경우에 처리된다.
+            # 부모노드의 link에 하위노드의 link를 대입하고, 노드를 삭제한다
+            if parent.left == current :
+               parent.left == current.left 
+            else :
+                parent.right = current.left 
+            del(current) 
+
+        elif current.left == None and current.right != None :
+            if parent.left == current :
+                parent.left = current.right 
+            else :
+                parent.right = current.right 
+            del(current)
+
+        print(deleteName, '이(가) 삭제됨')
+        break 
+
+    elif deleteName < current.data :
+        if current.left == None :
+            print(deleteName, '이(가) 트리에 없음.')
+            break 
+        parent = current 
+        current = current.left 
+
+    else :
+        if current.right == None :
+            print(deleteName, '이(가) 트리에 없음.') 
+            break 
+        parent = current 
+        current =  current.right 
+    
+
