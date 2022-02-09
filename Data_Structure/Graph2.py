@@ -132,7 +132,7 @@ class Graph() :
         
 def printGraph(g) :
     print(' ', end = ' ')
-    for v in range(g, SIZE) :
+    for v in range(g.SIZE) :
         print(nameAry[v], end = ' ')
     print()
     for row in range(g.SIZE) :
@@ -143,9 +143,9 @@ def printGraph(g) :
 
     print()
 
-def fineVertex(g, findVtx) :
+def findVertex(g, findVtx) :
     stack = []    # 방문 기록을 쌓기 위한 스택
-    visitAry = []  # 방문한 정점
+    visitedAry = []  # 방문한 정점
 
     current = 0  # 시작 정점
     stack.append(current)  # 스택에 현재 정점을 추가한다.
@@ -195,7 +195,7 @@ for i in range(gSize) :
         if G1.graph[i][k] != 0 :
             edgeAry.append([G1.graph[i][k], i, k])
 
-from operator import itmegetter 
+from operator import itemgetter 
 edgeAty = sorted(edgeAry, key = itemgetter(0), reverse = True)
 
 newAry = [] 
@@ -223,5 +223,4 @@ while (len(newAry) > gSize-1) :  # 간선 개수가 '정점 개수 - 1'일 때�
 
 print('## 최소 비용의 자전거 도로 연결도 ##')
 printGraph(G1)
-
-
+#--------------------------
