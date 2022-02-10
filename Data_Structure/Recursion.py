@@ -145,3 +145,110 @@ print('피보나치 수 -> 0 1 ', end = ' ')
 for i in range(2, 20) :
     print(fibo(i), end = ' ')
 '''
+
+# 재귀호출의 응용
+'''
+1) 회문 판단하기 
+: 우선 회문은 앞에서 읽든 뒤에서 읽든 동일한 단어나 문장을 의미한다. 앞에도 뒤에도 이효리~ 
+특히나 대소문자 구분, 띄어쓰기 구분을 제외하면 의외로 정말 많은 예시가 있다. 
+
+회문을 확인하는 코드를 구현해보자.
+p.380 Code10-11 회문 여부 구별
+
+def paintedrome(pSrt) :
+    if len(pStr) <= 1 :
+        return True
+
+    if pStr[0] != pStr[-1] :
+        return False 
+
+    return palindrome(pStr[1:len(pStr)-1])
+
+strAry = ["reaver", "kayak", "Borrow or rob", "주유소의 소유주", "야 너 이번 주 주번이 너야", "살금 살금"]
+
+for testStr in strAry :
+    print(testStr, end = '-->')
+    testStr = trstStr.lower().replace(' ', '')
+    if palindrome(testStr) :
+        print('0')
+    else :
+        print('x')
+#--------------------------------------
+2) 프랙탈 그리기
+: 프랙탈은 작은 조각이 전체와 비슷한 기하학적인 형태를 의미하는데, 이런 특징을 자기유사성 이라고 한다.
+프랙탈은 수학적 도형으로도 구현할 수 있는데, 삼각형, 사각형 원등의 구조를 자기 복제 형태로 반복해서 구성하기도 한다.
+도형을 그릴 때는 GUI 형식의 화면 출력이 필요하다. Python은 thinter 라는 라이브러리를 제공하고 있다.
+
+Code10-12 간단한 원을 그리는 GUI 프로그래밍
+from tkinter import *  # GUI 프로그래밍에 필수인 tkinter을 사용
+
+window = Tk()  # 윈도우창 생성
+canvas = Canvas(window, height = 1000, width = 1000, bg ='white')  # 선, 원 등을 그리고자 캔버스(=도화지)를 생성한다. 
+# 매개변수 window는 윈도 창에 캔버스를 출력한다, height, width는 캔버스의 높이, 폭 이다. bg(back ground)로 배경색을 지정
+canvas.pick()
+
+# cx와 cy는 원을 그리기 위한 중심점
+cx = 1000//2
+cy = 1000//2
+r = 400
+canvas.create_oval(cx-r, cy-r, cx+r, cy+r, width=2, outline="red")
+
+window.mainloop()  # 화면 출력
+#-------------------------------------------
+
+P384 code10-13 3단계의 프랙탈 원 그리기
+
+from tkinter import *
+
+def drawCircle(x, y, r) :
+    global count 
+    count += 1
+    canvas.create_oval(x-r, y-r, x+r, y+r)
+    canvas.create_text(x,y-r, text = str(count), font = ('', 30))
+    if r >= radius/2 :
+        drawCircle(x-r//2, y, r//2)
+        drawCircle(x+r//2, y, r//2)
+
+count = 0
+wSize = 1000
+radius = 400
+
+window = Tk()
+canvas = Canvas(window, height=wSize, width=wSize, bg='white')
+
+drawCircle(wSize//2, wSize//2, radius)
+
+canvas.pack()
+window.mainloop()
+#------------------------------------------------------
+code10-14 전체 프랙탈 원 그리기
+
+from tkinter import *
+import random
+
+def drawCircle(x, y, r) :
+    canvas.create_oval(x-r, y-r, x+r, y+r, width=2, outline=random.choice(colors))
+    if r >= 5 :
+        drawCircle(x-r//2, y, r//2)
+        drawCircle(x+r//2, y, r//2)
+
+colors = ["red", "green", "blue", "black", "orange", "indigo", "violet"]
+wSize = 1000
+radius = 400
+
+window = Tk()
+window.title("원 모양의 프랙탈")
+canvas = Canvas(window, height=wSize, bg = 'white')
+
+drawCircle(wSize//2, wSize//2, radius)
+
+canvas.pack()
+window.mainloop()
+'''
+
+
+
+
+
+
+
