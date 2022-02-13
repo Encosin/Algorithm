@@ -245,10 +245,3 @@ drawCircle(wSize//2, wSize//2, radius)
 canvas.pack()
 window.mainloop()
 '''
-
-
-
-
-
-
-
