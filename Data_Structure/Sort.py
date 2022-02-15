@@ -97,7 +97,89 @@ i    k       반복 횟수
 '''
 # 삽입 정렬
 : 기존 데이터 중에서 자신의 위치를 찾아 데이터를 삽입하는 정렬 방식을 사용한다.
+ 1) 나열된 배열 중에 [0] 번째 값을 젤 앞에 두고 [1]의 값과 [0]의 값을 비교하여 [1] > [0] : [1]을 뒤로, [1] < [0] : [1]을 앞으로
+ 2) 다음 [2] 값을 순서가 정해진 배열과 비교하여 줄을 세운다. 
+ 3) 이때부터는 계속 같은말이다.
+
+# 삽입 위치를 찾는 방법
+: 삽입 정렬을 구현하려면,먼저 현재 값을 배열 중에 삽입할 위치를 찾는 함수가 필요하다. 
+  삽입 정렬의 전제조건은 삽입할 위치를 찾는 기존 배열은 이미 정렬되어 있다는 점이다.
+그냥 예시로 살펴보는게 더 빠르다..
+
+def findInsertIdx(ary, data) :
+    findIdx = -1  # 초깃값은 없는 위치로
+    for i in range(0, len(ary)) :
+        if (ary[i] > data) :
+            findIdx = i
+            break
+    if findIdx == -1 :  # 큰 값을 못찾음 == 제일 마지막 위치
+        return len(ary)
+    else :
+        return findIdx 
+
+testAry = []
+insPos = findInseryIdx(testAry, 55)
+print('삽입할 위치 --> ', insPos)
+
+testAry = [33, 77, 88]
+insPos = findInseryIdx(testAry, 55)
+print('삽입할 위치 --> ', insPos)
+
+testAry = [33, 55, 77, 88]
+insPos = findInseryIdx(testAry, 100)
+print('삽입할 위치 --> ', insPos)
 
 
+# P.410 Code 11-05 삽입정렬의 구현
+def findIdx(ary, data) :
+    findIdx = -1
+    for i in range(0, len(ary)) :
+        if (ary[i] > data) :
+            findIdx = i
+            break
+    if findIdx == 1 :  # 큰 값을 못찾음 == 제일 마지막 위치
+        return len(ary)
+    else :
+        return findIdx
+
+before = [188,162,168,120,50,150,177,105]
+after = []
+
+print('정렬 전 --> ', before)
+for i in range(len(bofore)) :  # 배열의 크기만큼 반복한다.
+    data = before[i]  # 배열에 차례대로 data를 넣는다.
+    insPos = findInsertIdx(after, data)  # 정렬 후 배열에 삽입될 위치를 찾고
+    after.insert(insPos, data)  # 정렬 후 배열의 찾은 위치에 삽입한다.
+print('정렬 후 --> ', after)
+'''
 
 '''
+# 평균값과 중앙값
+: 평균값은 비정상적인 수치가 섞여있을 경우 대푯값으로 사용하기가 어렵다. 실제로 딥러닝 모델을 구현할 때,
+  비정상적인 값 하나가 데이터 전체를 오염시키는 경우를 여러번 봤다. 예로 만원 단위의 수가 여러개 있는데, 거기에 1원을 하나 넣으면 평균값이 기하급수적으로
+  떨어지게 되는 것과 같다.
+  이렇게 비정상적인 값을 제외하고 대푯값을 구하는 것이 중앙값이다.
+
+중앙값을 코드로 구현하면 다음과 같다.
+# P.416 Code11-07 중앙값 계산
+def selectionSort(ary) :
+    n = len(ary)
+    for i in range(0, n-1) :
+        minIdx = i
+        for k in range(i+1, n) :
+            if(ary[minIdx] > ary[k]) :
+                minIdx = k
+        tmp = ary[i]
+        ary[i] = ary[minIdx]
+        ary[minIdx] = tmp
+
+    return ary
+
+moneyAry = [7,5,11,6,9,80000,10,6,15,12]
+
+print('용돈 정렬 전 --> ', moneyAry)
+moneyAry = selectionSort(meneyAry)
+print('용돈 정렬 후 --> ', moneyAry)
+print('용돈 중앙 값 --> ', moneyAry[len(moneyAry)//2])
+'''
+
