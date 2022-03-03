@@ -1,3 +1,7 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
 // Page 628 스택을 이용한 울타리 자르기 문제의 해법 중
 
 // 스위핑 Algorithm
