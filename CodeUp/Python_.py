@@ -44,3 +44,17 @@ array.sort()
 
 end_time = time.time() # 측정 종료
 print("기본 정렬 라이브러리 성능 측정:", end_time - start_time) # 수행 시간 출력 
+
+# ----------------------------------------------
+
+# 배열 정렬
+arr = [9, 2, 3, 4, 5]
+temp = 0 
+for i in arr :
+    if arr[i] > arr[i+1] :
+        temp = arr[i]
+        arr[i] = arr[i+1]
+        arr[i+1] = temp 
+    else :
+
+         
