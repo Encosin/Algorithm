@@ -1,4 +1,56 @@
 '''
+Search (탐색) DFS/BFS 는 탐색 Algorithm 에서 매우 빈번히 출제되는 문제이다. 
+이 두 탐색 알고리즘을 배우는데 선행하여 필요한 지식이 있는데 바로 Data_Structure에 Stack과 Queue이다. 
+음 귀찮으니 생략하겠다.
+
+스택 구현은 이거면 충분하다.
+stack = []
+stack.append(5)
+stack.append(2)
+stack.append(4)
+stack.pop()
+stack.append(7)
+stack.append(1)
+stack.append(6)
+stack.pop()
+
+print(stack) # 최하단 원소부터 출력
+print(stack[::-1]) # 최상단 원소부터 출력
+
+#----------------------
+
+다음은 queue 구현이다.
+
+from collections import deque
+
+# 큐 구현을 위해 deque 라이브러리 사용
+queue = deque()
+
+queue.append(5)
+queue.append(2)
+queue.append(3)
+queue.append(7)
+queue.popleft()
+queue.append(1)
+queue.append(4)
+queue.popleft()
+
+print(queue) # 먼저 들어온 순서대로 출력
+queue.reverse() # 다음 출력을 위해 역순으로 바꾸기
+print(queue) # 나중에 들어온 원소부터 출력
+'''
+
+
+
+
+
+
+
+
+
+
+
+'''
 # 재귀함수 호출을 반복하는 코드
 def recursive_function(i):
     # 100번째 호출을 했을 때 종료되도록 종료 조건 명시
@@ -109,7 +161,7 @@ dfs(graph, 1, visited)
 '''
 
 '''
-BFS(Breath-First Search)
+BFS(Breath-First Search) - 출제빈도 높다!
 : 너비 우선 탐색이라고도 부르며, 그래프에서 가까운 노드부터 우선적으로 탐색하는 Algorithm 입니다.
 BFS는 큐 자료구조를 이용하며, 구체적인 동작 과정은 다음과 같습니다. 
 1) 탐색 시작 노드를 큐에 삽입하고 방문 처리를 합니다.
