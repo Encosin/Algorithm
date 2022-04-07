@@ -51,6 +51,7 @@ print(queue) # 나중에 들어온 원소부터 출력
 
 
 '''
+재귀함수는 자기 자신을 다시 호출하는 함수이다.
 # 재귀함수 호출을 반복하는 코드
 def recursive_function(i):
     # 100번째 호출을 했을 때 종료되도록 종료 조건 명시
@@ -168,6 +169,47 @@ BFS는 큐 자료구조를 이용하며, 구체적인 동작 과정은 다음과
 2) 큐에서 노드를 꺼낸 뒤에 해당 노드의 인접 노드 중에서 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리합니다.
 3) 더 이상 2번의 과정을 수행할 수 없을때까지 반복합니다.
 
+일반적으로 수행시간은 DFS보다 좋은 편이다.
 '''
 
+# 5-9.py
+'''
+from collections import deque 
+
+# BFS 메서드 정의
+def bfs(graph, start, visited):
+    # 큐 구현을 위해 deque 라이브러리 사용
+    queue = deque([start])
+    
+    # 현재 노드를 방문처리
+    visited[start] = True
+
+    # 큐가 빌때까지 반복
+    while queue:
+        # 큐에서 하나의 원소를 뽑아 출력
+        v= queue.popleft()
+        print(v, end='')
+        # 해당원소와 연결된, 아직 방문하지 않은 원소들을 큐에 삽입
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True  
+
+# 각 노드가 연결된 정보를 리스트 자료형으로 표현(2차원 리스트)
+graph = [
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+# 각 노드가 방문된 정보를 리스트 자료형으로 표현
+visited = [False]*9
+bfs(graph, 1, visited)
+'''
 
