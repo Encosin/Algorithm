@@ -1,3 +1,4 @@
+# 자료구조와 알고리즘 with Python
 '''
 정렬은 간단히 자료들을 일정한 순서대로 나열하는 것이다.
 주로 1) 작은 것부터 나열(내림차순), 2) 큰 것부터 나열(오름차순) 등이 있다. 
@@ -14,19 +15,22 @@ Selection Sort(선택정렬)
    작은 값으로 지정된 값을 가장 작은 값으로 결정한다.
 
 '''
-# P.396 Code 11-04 배열에서 최솟값 위치를 찾는 함수
+# P.396 Code 11-01 배열에서 최솟값 위치를 찾는 함수
+"""
 def findMinIdx(ary) :  # 배열에서 가장 작은 값의 위치를 찾아서 반환하는 함수
     minIdx = 0   # 배열의 첫 번째 값을 현재 최솟값 위치로 지정한다.
-    for i in range(1, len(ary)) :  # 배열의 두번째 값부터 마지막까지 반복하는 반복문
-        if (ary[minIdx] > ary[i]) :
-            minIdx = i
+    for i in range(1, len(ary)) :  # 배열의 두번째 값(첫번째 값은 0으로 지정했으므로)부터 마지막(배열의 크기만큼)까지 반복하는 반복문
+        if (ary[minIdx] > ary[i]) :  # ary는 배열의 총 크기고 minIdx는 첫번째 값이다. ary[0]의 값이 ary[i]번째 값보다 클 경우
+            minIdx = i  # 최소값에 현재 돌고있는 루프인 i번째 값을 지정.
     return minIdx  # 찾아낸 배열의 최솟값 위치를 변환한다.
 
 testAry = [55, 88, 33, 77]
-minPos = findMinIdx(testAry)  # 배열에서 최솟값 위치를 찾고
+minPos = findMinIdx(testAry)  # testAry에서 최솟값 위치를 찾는 함수에 값을 넣고
 print('최솟값 -->', testAry[minPos])  # 찾은 최솟값 위치를 반환한다.
+"""
 
 # P.398 Code11-02 선택정렬 구현
+"""
 def findMinIdx(ary) :  # 배열에서 가장 작은 값의 위치를 찾아서 반환하는 함수
     minIdx = 0   # 배열의 첫 번째 값을 현재 최솟값 위치로 지정한다.
     for i in range(1, len(ary)) :  # 배열의 두번째 값부터 마지막까지 반복하는 반복문
@@ -43,6 +47,7 @@ for _ in range(len(before)) :  # 배열 크기만큼 돌아가는 반복문
     after.append(before[minPos])
     del(before[minPos])
 print('정렬 후 --> ', after)
+"""
 
 # 변수 값 교환
 '''
