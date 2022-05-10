@@ -160,6 +160,7 @@ M은 손님이 찾는 부품의 개수, 옆 list는 필요한 부품의 번호
 그래서 최종 시간복잡도는 O((M + N) x logN)'''
 
 # p.198 7-5.py 이진탐색 답안 예시
+"""
 def binary_search(array, target, start, end):
     while start <- end:
         mid = (start + end) // 2
@@ -200,4 +201,31 @@ for i in x :
     else:
         print('no', end=' ') 
         
+"""
+
+# 7-6.py 계수정렬 풀이 
+# N(가게의 부품 개수)을 입력받기 
+n = int(input())
+array = [0] * 1000001
+
+# 가게에 있는 전체 부품 번호를 입력받아서 기록
+for i in input().split():
+    array[int(i)] = 1
+    
+# M(손님이 확인 요청한 부품 개수)을 입력받기 
+m = int(input())
+
+# 손님이 확인 요청한 전체 부품 번호를 공백으로 구분하여 입력 
+x = list(map(int, input().split()))
+
+# 손님이 확인 요청한 부품 번호를 하나씩 확인
+for i in x:
+    # 해당 부품이 존재하는지 확인 
+    if array[i] == 1:
+        print('yes', end = ' ')
+    else:
+        print('no', end = ' ')
+        
+        
+
 
