@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include<stack>
+#include<stack>  // STL 라이브러리
 using namespace std;
 stack<int> S;
 
