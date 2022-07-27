@@ -15,8 +15,18 @@
 # myarray = np.array(myarray)
 # myarray = pd.DataFrame(myarray)
  
-try:
-    import numpy 
-    print("Numpy is installed")
-except:
-    print("Not")
+# try:
+#     import numpy 
+#     print("Numpy is installed")
+# except:
+#     print("Not")
+
+a = int(input())
+b = input()
+# a는 int로 b는 문자로 입력을 받으려 한다. 
+print(a * int(b[-1]), a*int(b[-2]), a*int(b[-3]), sep='\n')
+# 참고로 sep은 Python List에서 주로 사용하는 문법으로 각 값들 사이에 
+
+one = int(input())
+two = input()
+print(one * int(two[-1]), one * int(two[-2]), one * int(two[-3]), one * int(two), sep='\n')
